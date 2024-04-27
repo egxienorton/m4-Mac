@@ -8,6 +8,9 @@ class QuizState {
   final List<QuizModel> incorrect;
   final QuizStatus status;
 
+    bool get answered =>
+      status == QuizStatus.incorrect || status == QuizStatus.correct;
+
   const QuizState(
       {required this.selectedAnswer,
       required this.correct,

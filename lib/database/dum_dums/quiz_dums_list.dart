@@ -15,7 +15,7 @@ List<QuizModel> quizzes = [
         "King&#039;s Head"
       ],
       category: 'General Knowledge',
-      correctAnswer: "Red Lion",
+      correctAnswer: "Royal Oak",
       difficulty: "medium",
       question: 'What is the most common pub name in the UK? '),
   QuizModel(
@@ -25,7 +25,7 @@ List<QuizModel> quizzes = [
         "King&#039;s Head"
       ],
       category: 'General Knowledge',
-      correctAnswer: "Emekus",
+      correctAnswer: "Chima",
       difficulty: "medium",
       question: 'What is the most common name in the Naija? '),
   QuizModel(
@@ -35,7 +35,7 @@ List<QuizModel> quizzes = [
         "King&#039;s Head"
       ],
       category: 'General Knowledge',
-      correctAnswer: "Osakpolor",
+      correctAnswer: "Amadin",
       difficulty: "medium",
       question: 'What is the most common name in the Benin City? ')
 ];

@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:xiphone/App/Controllers/Quiz/quiz_state.dart';
 import 'package:xiphone/App/Models/quiz_model.dart';
 
-final quizControllerProvider = StateNotifierProvider.autoDispose<QuizController, QuizState>((ref) {
+final quizControllerProvider = StateNotifierProvider<QuizController, QuizState>((ref) {
   return QuizController();
 });
 
