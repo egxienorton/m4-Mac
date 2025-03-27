@@ -1,0 +1,9 @@
+
+
+{
+    "@@locale" : "en",
+    "chooseLanguageTitle": "Choose your Language",
+    "@chooseLanguageTitle" : {
+        "description": "Title for the choose language"
+    }
+}

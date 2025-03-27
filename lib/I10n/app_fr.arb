@@ -1,0 +1,11 @@
+
+
+
+
+{
+    "@@locale" : "fr",
+    "chooseLanguageTitle": "Choisissez votre langue",
+    "@chooseLanguageTitle" : {
+        "description": "Titre pour I'  choose language"
+    }
+}
