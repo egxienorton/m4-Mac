@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
-import 'package:xiphone/artifacts/home.dart';
-import 'package:xiphone/theme/theme.dart';
+import 'package:xiphone/App/Providers/Notifiers/cart_notifier.dart';
+import 'package:xiphone/extras/artifacts/home.dart';
+import 'package:xiphone/config/theme/theme.dart';
 
-import 'constants/router.dart';
-import 'widgets/kustom_painter.dart';
+import 'config/constants/router.dart';
+import 'resources/views/quiz/home.dart';
+import 'resources/widgets/kustom_painter.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -17,35 +19,84 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer(builder: (ctx, ref, _){
-      final theme = ref.watch(themeProvider);
-
-      return MaterialApp.router(
-      theme: theme.themeData,
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routerDelegate: RoutemasterDelegate(
-        routesBuilder: (context) {
-          return loggedInRoute;
-        },
-      ),
-      routeInformationParser: const RoutemasterParser(),
+      home: QuizScreen()
+      
+      // Scaffold(
+      //     appBar: AppBar(
+      //       leading: Icon(CupertinoIcons.back),
+      //       title: Text('Xie norton'),
+      //     ),
+      //     backgroundColor: Colors.grey,
+          // floatingActionButton: FloatingActionButton(onPressed: (){
 
-      // Localization setup
+          // }, child: ,),
+          // body: Consumer(
+          //     builder: (BuildContext context, WidgetRef ref, Widget? child) {
+          //   final stringProvider = ref.watch(stringStateNotifierProvider);
+          //   final stringProviderNotifier =
+          //       ref.read(stringStateNotifierProvider.notifier);
+          //   return Center(
+          //     child: Column(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       crossAxisAlignment: CrossAxisAlignment.center,
+          //       children: [
+          //         Text(stringProvider, textAlign: TextAlign.center, style: TextStyle(fontSize: 34, color: Colors.black),),
+          //         ElevatedButton(
+          //             onPressed: () {
+          //               stringProviderNotifier.transform();
+          //             },
+          //             child: Icon(CupertinoIcons.chart_bar)),
+          //         ElevatedButton(
+          //             onPressed: () {
+          //               stringProviderNotifier.showNumber();
+          //             },
+          //             child: Icon(CupertinoIcons.plus_app))
+          //       ],
+          //     ),
+          //   );
+          // })
 
-      // locale: appLocale,
-      // supportedLocales: const [
-      //  Locale("en", ''),
-      //  Locale("fr", ''),
-      // ],
-
-      // localizationsDelegates: const [
-
-      // ],
+          //  Center(child: Text('Hello uniben', style: TextStyle(color: Colors.white, fontSize: 26),),),
+          // ),
     );
-    });
   }
 }
 
+// class MyApp extends StatelessWidget {
+//   const0 MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return  Consumer(builder: (ctx, ref, _){
+//       final theme = ref.watch(themeProvider);
+
+//       return MaterialApp.router(
+//       theme: theme.themeData,
+//       debugShowCheckedModeBanner: false,
+//       routerDelegate: RoutemasterDelegate(
+//         routesBuilder: (context) {
+//           return loggedInRoute;
+//         },
+//       ),
+//       routeInformationParser: const RoutemasterParser(),
+
+//       // Localization setup
+
+//       // locale: appLocale,
+//       // supportedLocales: const [
+//       //  Locale("en", ''),
+//       //  Locale("fr", ''),
+//       // ],
+
+//       // localizationsDelegates: const [
+
+//       // ],
+//     );
+//     });
+//   }
+// }
 
 class StudynautzLoginPage extends ConsumerWidget {
   const StudynautzLoginPage({super.key});
@@ -53,7 +104,6 @@ class StudynautzLoginPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-   
       backgroundColor: Colors.black,
       body: KustomPainter(
         child: SafeArea(
@@ -89,7 +139,10 @@ class StudynautzLoginPage extends ConsumerWidget {
                     onTap: () async {
                       // await ref.read(authServiceProvider).signInWithGoogle();
 
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> StudynautzHomePage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => StudynautzHomePage()));
                     },
                     child: Container(
                       margin: const EdgeInsets.all(20),

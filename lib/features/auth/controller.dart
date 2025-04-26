@@ -2,12 +2,12 @@ import 'package:appwrite/appwrite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:xiphone/api/auth_api.dart';
-import 'package:xiphone/api/user_api.dart';
-import 'package:xiphone/artifacts/home.dart';
-import 'package:xiphone/core/utils/utils.dart';
+import 'package:xiphone/App/Repositories/auth_api.dart';
+import 'package:xiphone/App/Http/api/user_api.dart';
+import 'package:xiphone/extras/artifacts/home.dart';
+import 'package:xiphone/bootstrap/utils/utils.dart';
 import 'package:xiphone/features/auth/login/login.dart';
-import 'package:xiphone/models/user_model.dart';
+import 'package:xiphone/App/Models/user_model.dart';
 
 // final authControllerProvider = StateNotifierProvider((ref) {
 

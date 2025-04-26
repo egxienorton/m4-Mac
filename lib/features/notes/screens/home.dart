@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xiphone/constants/ui_constants.dart';
+import 'package:xiphone/config/constants/ui_constants.dart';
 
 class NotesPage extends StatelessWidget {
   const NotesPage({super.key});
