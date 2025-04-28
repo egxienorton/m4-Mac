@@ -2,6 +2,17 @@ import 'package:appwrite/appwrite.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:xiphone/config/constants/appwrite_constants.dart';
 
+import '../../bootstrap/services/isar_service.dart';
+
+final isarServiceProvider = Provider((ref){
+  return IsarService();
+});
+
+
+
+
+
+//////////////////////////----APPWRITE-----\\\\\\\\\\\\\\\\\\\\\\\\\\\
 final appwriteClientProvider = Provider((ref) {
   Client client = Client();
 
@@ -25,7 +36,3 @@ final appwriteDatabaseProvider = Provider((ref){
   return Databases(client);
 });
 
-
-final isarServiceProvider = Provider((ref){
-    // return Isar();
-});

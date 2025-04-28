@@ -1,12 +1,15 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
+import 'routes/web.dart';
 import 'package:xiphone/App/Providers/Notifiers/cart_notifier.dart';
 import 'package:xiphone/extras/artifacts/home.dart';
 import 'package:xiphone/config/theme/theme.dart';
 
 import 'config/constants/router.dart';
+import 'resources/isar_test/isar_test.dart';
 import 'resources/views/quiz/home.dart';
 import 'resources/widgets/kustom_painter.dart';
 
@@ -19,47 +22,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      theme: FlexThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: QuizScreen()
+      routeInformationParser: const RoutemasterParser(),
+      routerDelegate: routerDelegate,
       
-      // Scaffold(
-      //     appBar: AppBar(
-      //       leading: Icon(CupertinoIcons.back),
-      //       title: Text('Xie norton'),
-      //     ),
-      //     backgroundColor: Colors.grey,
-          // floatingActionButton: FloatingActionButton(onPressed: (){
-
-          // }, child: ,),
-          // body: Consumer(
-          //     builder: (BuildContext context, WidgetRef ref, Widget? child) {
-          //   final stringProvider = ref.watch(stringStateNotifierProvider);
-          //   final stringProviderNotifier =
-          //       ref.read(stringStateNotifierProvider.notifier);
-          //   return Center(
-          //     child: Column(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       crossAxisAlignment: CrossAxisAlignment.center,
-          //       children: [
-          //         Text(stringProvider, textAlign: TextAlign.center, style: TextStyle(fontSize: 34, color: Colors.black),),
-          //         ElevatedButton(
-          //             onPressed: () {
-          //               stringProviderNotifier.transform();
-          //             },
-          //             child: Icon(CupertinoIcons.chart_bar)),
-          //         ElevatedButton(
-          //             onPressed: () {
-          //               stringProviderNotifier.showNumber();
-          //             },
-          //             child: Icon(CupertinoIcons.plus_app))
-          //       ],
-          //     ),
-          //   );
-          // })
-
-          //  Center(child: Text('Hello uniben', style: TextStyle(color: Colors.white, fontSize: 26),),),
-          // ),
     );
   }
 }
