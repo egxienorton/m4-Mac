@@ -4,20 +4,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:xiphone/App/Providers/providers.dart';
 import 'package:xiphone/database/entities/book_category/book_category.dart';
+import 'package:xiphone/database/entities/notes/note.dart';
 
 import '../../database/entities/book/book.dart';
 
-class AddBookScreen extends ConsumerStatefulWidget {
-  const AddBookScreen({super.key});
+class AddNoteScreen extends ConsumerStatefulWidget {
+  const AddNoteScreen({super.key});
 
   @override
-  ConsumerState<AddBookScreen> createState() => _AddBookState();
+  ConsumerState<AddNoteScreen> createState() => _AddNoteState();
 }
 
-class _AddBookState extends ConsumerState<AddBookScreen> {
+class _AddNoteState extends ConsumerState<AddNoteScreen> {
   late TextEditingController nameController;
 
-  // BookCategory selectedBookCategory;
+  // NoteCategory selectedNoteCategory;
 
   @override
   void initState() {
@@ -52,39 +53,25 @@ class _AddBookState extends ConsumerState<AddBookScreen> {
                   ),
             ),
             Spacer(),
+            
             ElevatedButton(
                 onPressed: () {
-                  Routemaster.of(context).push('/add-author-screen');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [Icon(Icons.add), Text('Go to author')],
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  Routemaster.of(context).push('/add-category-screen');
-                 
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [Icon(Icons.add), Text('Go to Category')],
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  // final  book = Book()
+
+                  final note = INote('Hi From egxie', 'Yo! man we the best');
+
+                  isarService.createNote(note);
+                  // final  book = Note()
 
 
                   // ..title= ''
                   // ..bookCategory = 
                   // ..author= '';
-                  // isarService.createBook(book);
+                  // isarService.createNote(book);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
-                  children: [Icon(Icons.add), Text('Add book')],
+                  children: [Icon(Icons.add), Text('Add note')],
                 )),
             
           ],

@@ -17,7 +17,7 @@ class IsarTest extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print('navigating to screen');
-          Routemaster.of(context).push('/add-book-screen');
+          Routemaster.of(context).push('/add-note-screen');
         },
         child: Icon(Icons.add),
       ),
@@ -27,30 +27,34 @@ class IsarTest extends ConsumerWidget {
             Container(
               child: Expanded(
                   child: StreamBuilder(
-                      stream: isarService.getAllBooks(),
+                      stream: isarService.grabNotes(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
-                          final books = snapshot.data!;
-                          if (books.isEmpty) {
+                          final notes = snapshot.data!;
+                          if (notes.isEmpty) {
                             return Center(
-                              child: Text('No books found'),
+                              child: Text('No note found'),
                             );
                           }
-                          return ListView.builder(
+                          return GridView.builder(
+                            
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3),
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
-                                final book = books[index];
+                                final note = notes[index];
 
                                 return Card(
                                   child: ListTile(
-                                    title: Text(book.title),
+                                    title: Text(note.title!),
                                     // subtitle: Text(book.author.firstName),
                                   ),
                                 );
                               });
                         } else {
                           return Center(
-                            child: Text('No books found'),
+                            child: Text('Looking for notes'),
                           );
                         }
                       })),

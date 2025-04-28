@@ -4,6 +4,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:xiphone/database/entities/author/author.dart';
 import 'package:xiphone/database/entities/book/book.dart';
 import 'package:xiphone/database/entities/book_category/book_category.dart';
+import 'package:xiphone/database/entities/notes/note.dart';
 
 
 class IsarService {
@@ -17,7 +18,7 @@ class IsarService {
     if (Isar.instanceNames.isEmpty) {
       final dir = await getApplicationDocumentsDirectory();
       return await Isar.open(
-        [BookSchema, AuthorSchema, BookCategorySchema],
+        [BookSchema, AuthorSchema, BookCategorySchema, INoteSchema],
         // inspector: true,
         directory: dir.path,
       );
@@ -52,6 +53,15 @@ class IsarService {
     yield* isar.authors.where().watch(fireImmediately: true);
   }
 
+  ////////////---- NOTES -----\\\\\\\\\\
+  Stream<List<INote>> grabNotes () async* {
+    final isar = await db;
+    yield* isar.iNotes.where().watch(fireImmediately: true);
+  }
+  Future<void> createNote(INote note) async {
+    final isar = await db;
+    isar.writeTxnSync<int>(()=> isar.iNotes.putSync(note));
+  }
 
   // Ckear
   Future<void> cleanDB() async {
