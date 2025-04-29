@@ -13,7 +13,16 @@ import 'resources/isar_test/isar_test.dart';
 import 'resources/views/quiz/home.dart';
 import 'resources/widgets/kustom_painter.dart';
 
-void main() {
+void main() async {
+
+  WidgetFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  FirebaseMessaging.
+
+
   runApp(const ProviderScope(child: MyApp()));
 }
 
