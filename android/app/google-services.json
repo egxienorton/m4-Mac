@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "120667034622",
+    "project_id": "appwrite-api",
+    "storage_bucket": "appwrite-api.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120667034622:android:8f77cc08dc0a6b3bbc66af",
+        "android_client_info": {
+          "package_name": "com.example.xiphone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUHV2ZoHvOOrPH4etrWkB5GgSDUmaMBzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
