@@ -86,6 +86,15 @@ class _AddBookState extends ConsumerState<AddBookScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [Icon(Icons.add), Text('Add book')],
                 )),
+            ElevatedButton(
+                onPressed: () {
+                  Routemaster.of(context).push('/theme-settings');
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [Icon(Icons.add), Text('Change App theme')],
+                )),
             
           ],
         ),

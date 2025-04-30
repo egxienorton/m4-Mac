@@ -2,33 +2,66 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:routemaster/routemaster.dart';
-import 'routes/web.dart';
-import 'package:xiphone/App/Providers/Notifiers/cart_notifier.dart';
+import 'package:routemaster/routemaster.dart'; 
+import 'package:xiphone/config/theme/theme_provider.dart';
+import 'config/theme/theme_settings.dart';
+import 'routes/web.dart'; 
 import 'package:xiphone/extras/artifacts/home.dart';
-import 'package:xiphone/config/theme/theme.dart';
-
-import 'config/constants/router.dart';
-import 'resources/isar_test/isar_test.dart';
-import 'resources/views/quiz/home.dart';
+import 'package:xiphone/config/theme/theme.dart'; 
 import 'resources/widgets/kustom_painter.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: FlexThemeData.dark(),
-      debugShowCheckedModeBanner: false,
-      routeInformationParser: const RoutemasterParser(),
-      routerDelegate: routerDelegate,
-      
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeModeAsync = ref.watch(themeModeProvider);
+
+    return themeModeAsync.when(
+        data: (themeMode) {
+          final flutterThemeMode = _getFlutterThemeMode(themeMode);
+
+          return MaterialApp.router(
+            themeMode: flutterThemeMode,
+            theme: ThemeData.light(useMaterial3: true),
+            darkTheme: ThemeData.dark(useMaterial3: true),
+            // theme: AppTheme.lightTheme(),
+            // darkTheme: AppTheme.darkTheme(),
+            // theme: FlexThemeData.dark(),
+            debugShowCheckedModeBanner: false,
+            routeInformationParser: const RoutemasterParser(),
+            routerDelegate: routerDelegate,
+          );
+        },
+        error: (err, stack) => MaterialApp(
+              home: Scaffold(
+                body: Center(
+                  child: Text('Error $err'),
+                ),
+              ),
+            ),
+        loading: () => const MaterialApp(
+              home: Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            ));
+  }
+
+  ThemeMode _getFlutterThemeMode(AppThemeMode themeMode) {
+    switch (themeMode) {
+      case AppThemeMode.light:
+        return ThemeMode.light;
+      case AppThemeMode.dark:
+        return ThemeMode.dark;
+      case AppThemeMode.system:
+        return ThemeMode.system;
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:xiphone/config/theme/theme_settings.dart';
 import 'package:xiphone/database/entities/author/author.dart';
 import 'package:xiphone/database/entities/book/book.dart';
 import 'package:xiphone/database/entities/book_category/book_category.dart';
@@ -18,7 +19,7 @@ class IsarService {
     if (Isar.instanceNames.isEmpty) {
       final dir = await getApplicationDocumentsDirectory();
       return await Isar.open(
-        [BookSchema, AuthorSchema, BookCategorySchema, INoteSchema],
+        [BookSchema, AuthorSchema, BookCategorySchema, INoteSchema, ThemeSettingsSchema],
         // inspector: true,
         directory: dir.path,
       );

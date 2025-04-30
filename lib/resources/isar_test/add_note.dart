@@ -73,6 +73,16 @@ class _AddNoteState extends ConsumerState<AddNoteScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [Icon(Icons.add), Text('Add note')],
                 )),
+
+                 ElevatedButton(
+                onPressed: () {
+                  Routemaster.of(context).push('/theme-settings');
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [Icon(Icons.add), Text('Change App theme')],
+                )),
             
           ],
         ),

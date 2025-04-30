@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';
+import 'package:xiphone/extras/artifacts/settings_home.dart';
 import 'package:xiphone/resources/isar_test/add_author.dart';
 import 'package:xiphone/resources/isar_test/add_book.dart';
 import 'package:xiphone/resources/isar_test/add_category.dart';
@@ -12,7 +13,8 @@ import 'package:xiphone/resources/views/quiz/home.dart';
 final routerDelegate = RoutemasterDelegate(
     routesBuilder: (context) => RouteMap(
           routes: {
-            '/': (_) => const MaterialPage(child: IsarTest()),
+            '/': (_) => const MaterialPage(child: SettingsHome()),
+            '/settings': (_) => const MaterialPage(child: IsarTest()),
             '/quiz-screen': (_) => const MaterialPage(child: QuizScreen()),
             '/add-note-screen': (_) =>
                 const MaterialPage(child: AddNoteScreen()),

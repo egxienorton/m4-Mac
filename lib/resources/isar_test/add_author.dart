@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:xiphone/App/Providers/providers.dart';
+import 'package:xiphone/database/entities/author/author.dart';
+
+
+// isarSer
 
 class AddAuthor extends ConsumerWidget {
   const AddAuthor({super.key});
@@ -16,7 +20,9 @@ class AddAuthor extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // isarService.cre
+          final Author author;
+
+          // author..firstName = 'Egxie'
         },
         child: Row(
           children: [Icon(CupertinoIcons.add), Text('Add Author')],

@@ -16,7 +16,6 @@ class IsarTest extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print('navigating to screen');
           Routemaster.of(context).push('/add-note-screen');
         },
         child: Icon(Icons.add),
